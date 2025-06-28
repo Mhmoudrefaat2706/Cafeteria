@@ -1,0 +1,110 @@
+:root {
+    --primary-gold: #F54A00;
+    --coffee-brown: #6F4E37;
+    --medium-brown: #A47551;
+    --light-brown: #DAB49D;
+    --cream: #F5F1EA;
+    --success: #27AE60;
+    --reject: #E74C3C;
+}
+
+body {
+    background-color: var(--cream);
+    color: var(--coffee-brown);
+    font-family: "Poppins", sans-serif !important;
+}
+
+.navbar {
+    background-color: var(--coffee-brown) !important;
+}
+
+.navbar-brand,
+.nav-link {
+    color: var(--cream) !important;
+}
+
+.nav-link:hover {
+    color: var(--primary-gold) !important;
+}
+
+.nav-item-custom {
+    background: linear-gradient(135deg, var(--primary-gold), #ffcc33);
+
+    margin: 0 5px;
+    border-radius: 20px;
+    padding: 8px 16px !important;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-item-custom:hover {
+    background: linear-gradient(135deg, var(--medium-brown), var(--light-brown));
+
+    color: var(--coffee-brown) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary {
+    background-color: var(--primary-gold);
+    border-color: var(--primary-gold);
+    color: wheat;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: var(--medium-brown);
+    border-color: var(--medium-brown);
+    color: var(--cream);
+}
+
+.card {
+    border: 2px solid var(--light-brown);
+    background-color: white;
+}
+
+.card-header {
+    background-color: var(--light-brown);
+    color: var(--coffee-brown);
+    font-weight: bold;
+}
+
+.drink-item {
+    border: 2px solid var(--light-brown);
+    border-radius: 10px;
+    background-color: white;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.drink-item:hover {
+    border-color: var(--primary-gold);
+    transform: translateY(-2px);
+}
+
+.drink-item.selected {
+    border-color: var(--primary-gold);
+    background-color: var(--cream);
+}
+
+.price-badge {
+    background-color: var(--primary-gold);
+    color: wheat;
+    font-weight: bold;
+}
+
+.total-price {
+    background-color: var(--success);
+    color: var(--cream);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.form-control:focus {
+    border-color: var(--primary-gold);
+    box-shadow: 0 0 0 0.2rem rgba(255, 180, 0, 0.25);
+}
+
+.form-select:focus {
+    border-color: var(--primary-gold);
+    box-shadow: 0 0 0 0.2rem rgba(255, 180, 0, 0.25);
+}
