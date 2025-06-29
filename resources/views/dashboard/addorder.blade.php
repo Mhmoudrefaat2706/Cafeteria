@@ -1,6 +1,6 @@
 @extends('dashboard.index')
 @section('page_name')
-Admin Add Order For User
+    Admin Add Order For User
 @endsection
 @section('ordercontent')
     <div class="container mt-4">
@@ -96,28 +96,28 @@ Admin Add Order For User
                         <div class="row g-3">
                             <!-- Row 1 -->
                             <div class="col-md-3 col-sm-6">
-                                <div class="drink-item p-3 text-center h-100" onclick="selectDrink(this, 'tea', 5)">
+                                <div class="drink-item p-3 text-center h-100">
                                     <i class="fas fa-mug-hot fa-3x mb-2" style="color: var(--coffee-brown);"></i>
                                     <h6 class="fw-bold">Tea</h6>
                                     <span class="badge price-badge">5 LE</span>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
-                                <div class="drink-item p-3 text-center h-100" onclick="selectDrink(this, 'tea', 6)">
+                                <div class="drink-item p-3 text-center h-100">
                                     <i class="fas fa-mug-hot fa-3x mb-2" style="color: var(--coffee-brown);"></i>
                                     <h6 class="fw-bold">Tea</h6>
                                     <span class="badge price-badge">6 LE</span>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
-                                <div class="drink-item p-3 text-center h-100" onclick="selectDrink(this, 'tea', 8)">
+                                <div class="drink-item p-3 text-center h-100">
                                     <i class="fas fa-mug-hot fa-3x mb-2" style="color: var(--coffee-brown);"></i>
                                     <h6 class="fw-bold">Tea</h6>
                                     <span class="badge price-badge">8 LE</span>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
-                                <div class="drink-item p-3 text-center h-100" onclick="selectDrink(this, 'tea', 10)">
+                                <div class="drink-item p-3 text-center h-100">
                                     <i class="fas fa-mug-hot fa-3x mb-2" style="color: var(--coffee-brown);"></i>
                                     <h6 class="fw-bold">Tea</h6>
                                     <span class="badge price-badge">10 LE</span>
@@ -126,28 +126,28 @@ Admin Add Order For User
 
                             <!-- Row 2 -->
                             <div class="col-md-3 col-sm-6">
-                                <div class="drink-item p-3 text-center h-100" onclick="selectDrink(this, 'tea', 5)">
+                                <div class="drink-item p-3 text-center h-100">
                                     <i class="fas fa-mug-hot fa-3x mb-2" style="color: var(--coffee-brown);"></i>
                                     <h6 class="fw-bold">Tea</h6>
                                     <span class="badge price-badge">5 LE</span>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
-                                <div class="drink-item p-3 text-center h-100" onclick="selectDrink(this, 'coffee', 8)">
+                                <div class="drink-item p-3 text-center h-100">
                                     <i class="fas fa-coffee fa-3x mb-2" style="color: var(--coffee-brown);"></i>
                                     <h6 class="fw-bold">Coffee</h6>
                                     <span class="badge price-badge">8 LE</span>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
-                                <div class="drink-item p-3 text-center h-100" onclick="selectDrink(this, 'nescafe', 10)">
+                                <div class="drink-item p-3 text-center h-100">
                                     <i class="fas fa-coffee fa-3x mb-2" style="color: var(--medium-brown);"></i>
                                     <h6 class="fw-bold">Nescafe</h6>
                                     <span class="badge price-badge">10 LE</span>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
-                                <div class="drink-item p-3 text-center h-100" onclick="selectDrink(this, 'cola', 12)">
+                                <div class="drink-item p-3 text-center h-100">
                                     <i class="fas fa-glass-whiskey fa-3x mb-2" style="color: var(--coffee-brown);"></i>
                                     <h6 class="fw-bold">Cola</h6>
                                     <span class="badge price-badge">12 LE</span>
@@ -156,28 +156,28 @@ Admin Add Order For User
 
                             <!-- Row 3 -->
                             <div class="col-md-3 col-sm-6">
-                                <div class="drink-item p-3 text-center h-100" onclick="selectDrink(this, 'tea', 5)">
+                                <div class="drink-item p-3 text-center h-100">
                                     <i class="fas fa-mug-hot fa-3x mb-2" style="color: var(--coffee-brown);"></i>
                                     <h6 class="fw-bold">Tea</h6>
                                     <span class="badge price-badge">5 LE</span>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
-                                <div class="drink-item p-3 text-center h-100" onclick="selectDrink(this, 'tea', 6)">
+                                <div class="drink-item p-3 text-center h-100">
                                     <i class="fas fa-mug-hot fa-3x mb-2" style="color: var(--coffee-brown);"></i>
                                     <h6 class="fw-bold">Tea</h6>
                                     <span class="badge price-badge">6 LE</span>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
-                                <div class="drink-item p-3 text-center h-100" onclick="selectDrink(this, 'tea', 7)">
+                                <div class="drink-item p-3 text-center h-100">
                                     <i class="fas fa-mug-hot fa-3x mb-2" style="color: var(--coffee-brown);"></i>
                                     <h6 class="fw-bold">Tea</h6>
                                     <span class="badge price-badge">7 LE</span>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
-                                <div class="drink-item p-3 text-center h-100" onclick="selectDrink(this, 'tea', 8)">
+                                <div class="drink-item p-3 text-center h-100">
                                     <i class="fas fa-mug-hot fa-3x mb-2" style="color: var(--coffee-brown);"></i>
                                     <h6 class="fw-bold">Tea</h6>
                                     <span class="badge price-badge">8 LE</span>
