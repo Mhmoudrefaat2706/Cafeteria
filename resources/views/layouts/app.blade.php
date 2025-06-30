@@ -16,12 +16,6 @@
         <div class="container">
             <a class="navbar-brand fw-bold" href="#"><i class="fas fa-coffee me-2"></i>Cafeteria System</a>
             <div class="navbar-nav ms-auto">
-                <a class="nav-link nav-item-custom" href="#"><i class="fas fa-home me-2"></i>Home</a>
-                <a class="nav-link nav-item-custom" href="#"><i class="fas fa-box me-2"></i>Products</a>
-                <a class="nav-link nav-item-custom" href="#"><i class="fas fa-users me-2"></i>Users</a>
-                <a class="nav-link nav-item-custom" href="#"><i class="fas fa-clipboard me-2"></i>Manual Order</a>
-                <a class="nav-link nav-item-custom" href="#"><i class="fas fa-check-circle me-2"></i>Checks</a>
-            </div>
 
             <ul class="navbar-nav ms-auto">
                 @guest
@@ -73,7 +67,7 @@
 
     <div class="container">
         <h1>@yield('title')</h1>
-        @yield('ordercontent')
+        @yield('content')
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
 
