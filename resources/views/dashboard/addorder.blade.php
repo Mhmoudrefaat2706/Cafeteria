@@ -14,64 +14,78 @@
                     <div class="card-body">
                         <!-- Order Items -->
                         <div class="row mb-3">
-                            <div class="col-6">
-                                <label class="form-label fw-bold">Tea</label>
-                                <div class="input-group">
-                                    <button class="btn btn-outline-secondary btn-sm" type="button">-</button>
-                                    <input type="number" class="form-control text-center" id="tea-qty" value="5" min="0">
-                                    <button class="btn btn-outline-secondary btn-sm" type="button">+</button>
+
+                            @foreach ($cartitems as $item)
+
+                                <div class="col-6 position-relative">
+                                    <a href="{{ route('removeFromCart', $item['id'])}}">
+                                        <button class="btn btn-outline-danger btn-sm position-absolute top-0 end-0 mb-5"
+                                            style="margin-right:12px" type="button" title="Remove from cart"
+                                            style="z-index: 10;">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </a>
+
+                                    <label class="form-label fw-bold">{{$item['name']}}</label>
+                                    <div class="input-group">
+                                        <a href="{{ route('decreaseQuantity', $item['id']) }}"
+                                            class="btn btn-outline-danger btn-sm">-</a>
+                                        <input type="number" class="form-control text-center" id="tea-qty"
+                                            value="{{$item['quantity']}}" min="0">
+                                        <a href="{{ route('increaseQuantity', $item['id']) }}"
+                                            class="btn btn-outline-success btn-sm">+</a>
+                                    </div>
+
+                                    <small class="text-muted">EGP {{$item['price']}} each</small>
                                 </div>
-                                <small class="text-muted">EGP 25 each</small>
+                            @endforeach
+
+
+                        </div>
+                        <form action="{{ route('addOrder')}}" method="POST">
+                            @csrf
+                            <!-- Notes -->
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Notes</label>
+                                <textarea class="form-control" rows="3" placeholder="1 Tea Extra Sugar" required
+                                    name="note">1 Tea Extra Sugar</textarea>
                             </div>
-                            <div class="col-6">
-                                <label class="form-label fw-bold">Cola</label>
-                                <div class="input-group">
-                                    <button class="btn btn-outline-secondary btn-sm" type="button">-</button>
-                                    <input type="number" class="form-control text-center" id="cola-qty" value="3" min="0">
-                                    <button class="btn btn-outline-secondary btn-sm" type="button">+</button>
-                                </div>
-                                <small class="text-muted">EGP 30 each</small>
+
+                            <!-- Room Selection -->
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Room number</label>
+                                <select class="form-select" name="room_id">
+                                    <option selected value="5">5</option>
+                                    @foreach ($rooms as $room)
+                                        <option value="{{ $room->id }}">{{$room->id}}</option>
+                                    @endforeach
+                                </select>
                             </div>
-                        </div>
 
-                        <!-- Notes -->
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">Notes</label>
-                            <textarea class="form-control" rows="3"
-                                placeholder="1 Tea Extra Sugar">1 Tea Extra Sugar</textarea>
-                        </div>
+                            <!-- Add to User -->
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Add to user</label>
+                                <select class="form-select" name="user_id">
+                                    <option selected value="Islam Askar">Islam Askar</option>
+                                    @foreach ($users as $user)
+                                        <option value="{{ $user->id }}">{{$user->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
 
-                        <!-- Room Selection -->
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">Room</label>
-                            <select class="form-select">
-                                <option selected>ComboBox</option>
-                                <option>Meeting Room A</option>
-                                <option>Meeting Room B</option>
-                                <option>Office 101</option>
-                            </select>
-                        </div>
+                            <!-- Total -->
+                            <div class="text-center p-3 rounded total-price mb-3">
+                                <span id="total-price">
+                                    EGP {{$total}} total
+                                </span>
+                            </div>
 
-                        <!-- Add to User -->
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">Add to user</label>
-                            <select class="form-select">
-                                <option selected>Islam Askar</option>
-                                <option>John Doe</option>
-                                <option>Jane Smith</option>
-                                <option>Ahmed Ali</option>
-                            </select>
-                        </div>
+                            <!-- Confirm Button -->
 
-                        <!-- Total -->
-                        <div class="text-center p-3 rounded total-price mb-3">
-                            <span id="total-price">EGP 55</span>
-                        </div>
-
-                        <!-- Confirm Button -->
-                        <button class="btn btn-primary w-100 btn-lg">
-                            <i class="fas fa-check me-2"></i>Confirm Order
-                        </button>
+                            <button class="btn btn-primary w-100 btn-lg" type="submit">
+                                <i class="fas fa-check me-2"></i>Confirm Order
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -86,103 +100,60 @@
                             </div>
                             <div class="col-auto">
                                 <div class="input-group">
-                                    <span class="input-group-text"><i class="fas fa-search"></i></span>
-                                    <input type="text" class="form-control" placeholder="Search drinks...">
+                                    <form action="{{ route('products') }}" method="GET">
+                                        @csrf
+                                        <span class="input-group-text">
+                                            <button class="btn btn-outline-primary" type="submit"><i
+                                                    class="fas fa-search"></i></button>
+                                            <input type="text" class="ms-2 form-control" name="input_search"
+                                                placeholder="Search drinks...">
+                                        </span>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="row g-3">
-                            <!-- Row 1 -->
-                            <div class="col-md-3 col-sm-6">
-                                <div class="drink-item p-3 text-center h-100">
-                                    <i class="fas fa-mug-hot fa-3x mb-2" style="color: var(--coffee-brown);"></i>
-                                    <h6 class="fw-bold">Tea</h6>
-                                    <span class="badge price-badge">5 LE</span>
+                            @if (session('error'))
+                                <div class="alert alert-danger">
+                                    {{ session('error') }}
                                 </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="drink-item p-3 text-center h-100">
-                                    <i class="fas fa-mug-hot fa-3x mb-2" style="color: var(--coffee-brown);"></i>
-                                    <h6 class="fw-bold">Tea</h6>
-                                    <span class="badge price-badge">6 LE</span>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="drink-item p-3 text-center h-100">
-                                    <i class="fas fa-mug-hot fa-3x mb-2" style="color: var(--coffee-brown);"></i>
-                                    <h6 class="fw-bold">Tea</h6>
-                                    <span class="badge price-badge">8 LE</span>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="drink-item p-3 text-center h-100">
-                                    <i class="fas fa-mug-hot fa-3x mb-2" style="color: var(--coffee-brown);"></i>
-                                    <h6 class="fw-bold">Tea</h6>
-                                    <span class="badge price-badge">10 LE</span>
-                                </div>
-                            </div>
+                            @endif
+                            @if (!empty($results) && count($results) > 0)
+                                @foreach ($results as $result)
+                                    <a href="{{ route('addtocart', $result->id) }}"
+                                        style="text-decoration:none ; color:var(--medium-brown) !important">
 
-                            <!-- Row 2 -->
-                            <div class="col-md-3 col-sm-6">
-                                <div class="drink-item p-3 text-center h-100">
-                                    <i class="fas fa-mug-hot fa-3x mb-2" style="color: var(--coffee-brown);"></i>
-                                    <h6 class="fw-bold">Tea</h6>
-                                    <span class="badge price-badge">5 LE</span>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="drink-item p-3 text-center h-100">
-                                    <i class="fas fa-coffee fa-3x mb-2" style="color: var(--coffee-brown);"></i>
-                                    <h6 class="fw-bold">Coffee</h6>
-                                    <span class="badge price-badge">8 LE</span>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="drink-item p-3 text-center h-100">
-                                    <i class="fas fa-coffee fa-3x mb-2" style="color: var(--medium-brown);"></i>
-                                    <h6 class="fw-bold">Nescafe</h6>
-                                    <span class="badge price-badge">10 LE</span>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="drink-item p-3 text-center h-100">
-                                    <i class="fas fa-glass-whiskey fa-3x mb-2" style="color: var(--coffee-brown);"></i>
-                                    <h6 class="fw-bold">Cola</h6>
-                                    <span class="badge price-badge">12 LE</span>
-                                </div>
-                            </div>
+                                        <div class="drink-item p-3 text-center h-100 bg-success-subtle">
+                                            <i class="fas fa-mug-hot fa-3x mb-2" style="color: var(--coffee-brown);"></i>
+                                            <h6 class="fw-bold">{{ $result->name }}</h6>
+                                            <span class="badge price-badge">{{ $result->price }} LE</span>
+                                        </div>
+                                    </a>
 
-                            <!-- Row 3 -->
-                            <div class="col-md-3 col-sm-6">
-                                <div class="drink-item p-3 text-center h-100">
-                                    <i class="fas fa-mug-hot fa-3x mb-2" style="color: var(--coffee-brown);"></i>
-                                    <h6 class="fw-bold">Tea</h6>
-                                    <span class="badge price-badge">5 LE</span>
+                                @endforeach
+                            @else
+                                <p class="bg bg-danger-subtle text-white p-3"
+                                    style="border-radius:8px !important;  color: brown !important;">No Products Found!</p>
+                            @endif
+
+
+
+                            @foreach ($products as $product)
+                                <div class="col-md-3 col-sm-6">
+                                    <a href="{{ route('addtocart', $product->id) }}"
+                                        style="text-decoration:none ; color:var(--medium-brown) !important">
+                                        <div class="drink-item p-3 text-center h-100">
+                                            <i class="fas fa-mug-hot fa-3x mb-2" style="color: var(--coffee-brown);"></i>
+                                            <h6 class="fw-bold">{{ $product->name }}</h6>
+                                            <span class="badge price-badge">{{ $product->price }} LE</span>
+                                        </div>
+                                    </a>
                                 </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="drink-item p-3 text-center h-100">
-                                    <i class="fas fa-mug-hot fa-3x mb-2" style="color: var(--coffee-brown);"></i>
-                                    <h6 class="fw-bold">Tea</h6>
-                                    <span class="badge price-badge">6 LE</span>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="drink-item p-3 text-center h-100">
-                                    <i class="fas fa-mug-hot fa-3x mb-2" style="color: var(--coffee-brown);"></i>
-                                    <h6 class="fw-bold">Tea</h6>
-                                    <span class="badge price-badge">7 LE</span>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="drink-item p-3 text-center h-100">
-                                    <i class="fas fa-mug-hot fa-3x mb-2" style="color: var(--coffee-brown);"></i>
-                                    <h6 class="fw-bold">Tea</h6>
-                                    <span class="badge price-badge">8 LE</span>
-                                </div>
-                            </div>
+                            @endforeach
+
+
                         </div>
                     </div>
                 </div>
