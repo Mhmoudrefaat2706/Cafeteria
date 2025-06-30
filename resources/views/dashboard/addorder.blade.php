@@ -14,7 +14,11 @@
                     <div class="card-body">
                         <!-- Order Items -->
                         <div class="row mb-3">
-
+                            @if (session('Qerror'))
+                                <div class="alert alert-danger fs-6">
+                                    {{ session('Qerror') }}
+                                </div>
+                            @endif
                             @foreach ($cartitems as $item)
 
                                 <div class="col-6 position-relative">
@@ -144,9 +148,11 @@
                                 <div class="col-md-3 col-sm-6">
                                     <a href="{{ route('addtocart', $product->id) }}"
                                         style="text-decoration:none ; color:var(--medium-brown) !important">
-                                        <div class="drink-item p-3 text-center h-100">
-                                            <i class="fas fa-mug-hot fa-3x mb-2" style="color: var(--coffee-brown);"></i>
-                                            <h6 class="fw-bold">{{ $product->name }}</h6>
+                                        <div class="drink-item p-4 text-center " style="height:180px">
+                                            <img class="product-image"
+                                                src="{{ asset('images/one size/' . $product->image) }}" />
+
+                                            <h6 class="fw-bold ">{{ $product->name }}</h6>
                                             <span class="badge price-badge">{{ $product->price }} LE</span>
                                         </div>
                                     </a>

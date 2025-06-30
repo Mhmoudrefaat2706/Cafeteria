@@ -77,7 +77,9 @@ class AdminAddOrderController extends Controller
     {
         $cartitems = session('cart', []);
         foreach ($cartitems as &$item) {
-            if ($item['quantity'] > 1 || $item['id'] == $id) {
+            if ($item['quantity'] == 0 || !is_numeric($item['quantity'])) {
+                return redirect()->back()->with('Qerror', 'Quantity must be number and starts from 1');
+            } else if ($item['quantity'] > 1 || $item['id'] == $id) {
                 $item['quantity'] -= 1;
             }
         }
