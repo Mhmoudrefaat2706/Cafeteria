@@ -44,6 +44,13 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.product-image {
+    width: 50%;
+    height: 50%;
+    border-radius: 25%;
+    margin-bottom: 5px;
+}
+
 .btn-primary {
     background-color: var(--primary-gold);
     border-color: var(--primary-gold);

@@ -34,6 +34,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/dashboard/home', [AdminAddOrderController::class, 'index'])->name('dashboard.home');
 });
 
+
 // User Routes
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/user/home', function () {
@@ -41,5 +42,11 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     })->name('user.home');
 });
 
+Route::get('/admin-add-order', [AdminAddOrderController::class, 'index'])->name('products');
+Route::get('/add-to-cart/{id}', [AdminAddOrderController::class, 'addToCart'])->name('addtocart');
+Route::get('/removefromcart/{id}', [AdminAddOrderController::class, 'removeFromCart'])->name('removeFromCart');
+Route::get('/cart/decrease-quantity/{id}', [AdminAddOrderController::class, 'decreaseQuantity'])->name('decreaseQuantity');
+Route::get('/cart/increase-quantity/{id}', [AdminAddOrderController::class, 'increaseQuantity'])->name('increaseQuantity');
+Route::post('/admin-add-order/addorder', [AdminAddOrderController::class, 'store'])->name('addOrder');
 
 
