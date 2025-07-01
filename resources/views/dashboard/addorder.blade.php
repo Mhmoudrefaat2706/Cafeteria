@@ -50,16 +50,22 @@
                             @csrf
                             <!-- Notes -->
                             <div class="mb-3">
+                                @error('notes')
+                                    <div class="text-danger">{{$message}}</div>
+                                @enderror
                                 <label class="form-label fw-bold">Notes</label>
-                                <textarea class="form-control" rows="3" placeholder="1 Tea Extra Sugar" required
-                                    name="note">1 Tea Extra Sugar</textarea>
+                                <textarea class="form-control" rows="3" placeholder="1 Tea Extra Sugar"
+                                    name="notes">{{ old('notes') }}</textarea>
                             </div>
 
                             <!-- Room Selection -->
                             <div class="mb-3">
+                                @error('room_id')
+                                    <div class="text-danger">{{$message}}</div>
+                                @enderror
                                 <label class="form-label fw-bold">Room number</label>
                                 <select class="form-select" name="room_id">
-                                    <option selected value="5">5</option>
+                                    <option selected disabled value="{{ old('room_id') }}">1</option>
                                     @foreach ($rooms as $room)
                                         <option value="{{ $room->id }}">{{$room->id}}</option>
                                     @endforeach
@@ -68,9 +74,12 @@
 
                             <!-- Add to User -->
                             <div class="mb-3">
+                                @error('user_id')
+                                    <div class="text-danger">{{$message}}</div>
+                                @enderror
                                 <label class="form-label fw-bold">Add to user</label>
                                 <select class="form-select" name="user_id">
-                                    <option selected value="Islam Askar">Islam Askar</option>
+                                    <option selected disabled>Select user</option>
                                     @foreach ($users as $user)
                                         <option value="{{ $user->id }}">{{$user->name}}</option>
                                     @endforeach

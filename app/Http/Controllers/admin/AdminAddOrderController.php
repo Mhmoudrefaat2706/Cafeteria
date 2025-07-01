@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\Room;
+use App\Http\Requests\StoreOrder;
+
 use Number;
 use function Laravel\Prompts\alert;
 
@@ -32,7 +34,7 @@ class AdminAddOrderController extends Controller
         $total = $this->calculateTotal($cartitems);
         $search_value = $request->input('input_search');
 
-        if ($search_value && (empty($search_value) || is_numeric($search_value))) {
+        if ($request->filled($search_value) && is_numeric($search_value)) {
             return redirect()->back()->with('error', 'Please enter a valid product name!');
         }
 
@@ -44,7 +46,6 @@ class AdminAddOrderController extends Controller
         if ($search_value) {
             $results = Product::where('name', 'like', "%{$search_value}%")->get();
         }
-        $cartitems = session('cart', []);
         return view('dashboard.addorder', compact('products', 'results', 'rooms', 'users', 'cartitems', 'total'));
     }
 
@@ -108,18 +109,31 @@ class AdminAddOrderController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreOrder $request)
     {
         $cartitems = session('cart', []);
         $total = $this->calculateTotal($cartitems);
         $room = Room::find($request->room_id);
         $user = User::find($request->user_id);
-        Order::create([
+
+
+        $quantity = array_sum(array_column($cartitems, 'quantity'));
+        $order = Order::create([
             'notes' => $request->note,
             'amount' => $total,
             'room_id' => $room->id,
             'user_id' => $user->id,
+            'date' => now(),
+            'quantity' => $quantity,
         ]);
+
+        foreach ($cartitems as $cartitem) {
+            $order->products()->attach($cartitem['id'], [
+                'quantity' => $cartitem['quantity'],
+                'price' => $cartitem['price'],
+                'name' => $cartitem['name'],
+            ]);
+        }
         return to_route('products');
     }
 
