@@ -57,4 +57,5 @@ Route::get('/cart/decrease-quantity/{id}', [AdminAddOrderController::class, 'dec
 Route::get('/cart/increase-quantity/{id}', [AdminAddOrderController::class, 'increaseQuantity'])->name('increaseQuantity');
 Route::post('/admin-add-order/addorder', [AdminAddOrderController::class, 'store'])->name('addOrder');
 
-
+Route::get('/dashboard/orders',[AdminAddOrderController::class,'showOrders'])->name('orders');
+Route::put('/order/update/{id}',[AdminAddOrderController::class,'update'])->name('deliverorder');

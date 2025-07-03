@@ -25,6 +25,7 @@
                 <a class="nav-link nav-item-custom" href="{{ route(('products')) }}"><i
                         class="fas fa-clipboard me-2"></i>Manual Order</a>
                 <a class="nav-link nav-item-custom" href="#"><i class="fas fa-check-circle me-2"></i>Checks</a>
+                <a class="nav-link nav-item-custom" href="{{route('orders')}}"><i class="fas fa-clipboard me-2"></i>Orders</a>
             </div>
 
             <ul class="navbar-nav ms-auto">
@@ -78,6 +79,11 @@
     <div class="container">
         <h1>@yield('title')</h1>
         @yield('ordercontent')
+    </div>
+    
+    <div class="container">
+        <h1>@yield('order_title')</h1>
+        @yield('orders')
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
 
