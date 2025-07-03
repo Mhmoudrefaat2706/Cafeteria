@@ -16,7 +16,7 @@
         <div class="container">
             <a class="navbar-brand fw-bold" href="#"><i class="fas fa-coffee me-2"></i>Cafeteria System</a>
             <div class="navbar-nav ms-auto">
-
+                <a class="nav-link nav-item-custom" href="#"><i class="fas fa-home me-2"></i>Home</a>
             <ul class="navbar-nav ms-auto">
                 @guest
                     @if (Route::has('login'))
