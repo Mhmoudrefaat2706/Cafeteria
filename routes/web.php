@@ -4,11 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\AdminAddOrderController;
 use App\Http\Controllers\Auth\SocialController;
 use App\Http\Controllers\user\UserOrderController;
+use App\Http\Controllers\Admin\UserController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 Route::get('/dashboard', function () {
-    return view('dashboard.index');
+   return view('admin.dashboard.index');
 })->name('dashboard');
 
 
@@ -46,6 +47,16 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/cart/decrease-quantity/{id}', [AdminAddOrderController::class, 'decreaseQuantity'])->name('decreaseQuantity');
     Route::get('/cart/increase-quantity/{id}', [AdminAddOrderController::class, 'increaseQuantity'])->name('increaseQuantity');
     Route::post('/admin-add-order/addorder', [AdminAddOrderController::class, 'store'])->name('addOrder');
+
+        // users management
+  Route::resource('admin/users', UserController::class)->names([
+    'index' => 'users.index',
+    'create' => 'users.create',
+    'store' => 'users.store',
+    'edit' => 'users.edit',
+    'update' => 'users.update',
+    'destroy' => 'users.destroy',
+]);
 });
 
 
