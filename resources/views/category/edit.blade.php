@@ -6,7 +6,7 @@
         </a>
     </li>
     <li>
-        <a class="nav-link" href="{{ route('product.create') }}">
+        <a class="nav-link" href="{{ route('product.index') }}">
             All Products
         </a>
     </li>
@@ -18,7 +18,7 @@
     <section class="edit-category w-100">
         
  <div class="add-product-header d-flex justify-content-center align-items-center text-white">
-            <h2>Edit Category</h2>
+            <h2 class="text-white">Edit Category</h2>
 
         </div>
         <div class="edit-category-body mt-5 py-5 container border rounded-3 text-center">
@@ -42,7 +42,7 @@
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
-                <button class="btn-add-category" type="submit">Update Category</button>
+                <button class="Add btn-add-category" type="submit">Update Category</button>
             </form>
         </div>
         {{-- <button class="btn-add-category"><a href="{{ route('category.index') }}" class="btn align-item-center" style="color: wheat">

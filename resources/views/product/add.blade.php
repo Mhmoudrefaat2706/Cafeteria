@@ -17,7 +17,7 @@
     <section class="add-product ">
 
         <div class="add-product-header d-flex justify-content-center align-items-center text-white my-3">
-            <h2>Add new Product</h2>
+            <h2 class="text-white">Add new Product</h2>
         </div>
 
         <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
@@ -64,7 +64,7 @@
                 </select>
             </div>
 
-            <button type="submit" class="btn btn-primary">Create Product</button>
+            <button type="submit" class="btn Add btn-primary">Create Product</button>
         </form>
     </section>
 

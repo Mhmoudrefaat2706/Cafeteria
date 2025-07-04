@@ -26,7 +26,7 @@ class OrderSeeder extends Seeder
             ],
             [
                 'date' => now(),
-                'status' => 'out for delivery',
+                'status' => 'processing',
                 'amount' => 7.20,
                 'notes' => 'No ice in juice',
                 'room_id' => 1,
@@ -38,7 +38,7 @@ class OrderSeeder extends Seeder
                 'date' => now(),
                 'status' => 'done',
                 'amount' => 5.00,
-                'notes' => 'Order done by user',
+                'notes' => 'done',
                 'room_id' => 1,
                 'user_id' => 3,
                 'updated_at' => now(),
@@ -46,7 +46,7 @@ class OrderSeeder extends Seeder
             ],
             [
                 'date' => now(),
-                'status' => 'processing',
+                'status' => 'cancelled',
                 'amount' => 12.75,
                 'notes' => 'Urgent delivery',
                 'room_id' => 1,

@@ -8,7 +8,7 @@
         </a>
     </li>
     <li>
-        <a class="nav-link" href="">
+        <a class="nav-link" href="{{ route('user.orders') }}">
             My Orders
         </a>
     </li>

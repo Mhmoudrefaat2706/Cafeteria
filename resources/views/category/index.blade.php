@@ -6,7 +6,7 @@
         </a>
     </li>
     <li>
-        <a class="nav-link" href="{{ route('product.create') }}">
+        <a class="nav-link" href="{{ route('product.index') }}">
             All Products
         </a>
     </li>
@@ -32,7 +32,7 @@
                             </div>
 
                             <div class="col-sm-4">
-                                <a href="{{ route('category.create') }}" class="btn btn-primary mb-3 ">Create New
+                                <a href="{{ route('category.create') }}" class="btn Add btn-primary mb-3" >Create New
                                     Category</a>
                                 @if (session('success'))
                                     <div class="alert alert-success">
@@ -42,7 +42,7 @@
                             </div>
                         </div>
                     </div>
-                    <table class="table table-striped w-100">
+                    <table class="table table-bordered w-100">
                         <thead>
                             <tr>
                                 <th>Name</th>

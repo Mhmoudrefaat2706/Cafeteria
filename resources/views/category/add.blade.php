@@ -6,7 +6,7 @@
         </a>
     </li>
     <li>
-        <a class="nav-link" href="{{ route('product.create') }}">
+        <a class="nav-link" href="{{ route('product.index') }}">
             All Products
         </a>
     </li>
@@ -17,11 +17,10 @@
 
     <section class="add-category w-100">
         <div class="add-category-header d-flex justify-content-center align-items-center text-white">
-            <h2>Add new category</h2>
+            <h2 class="text-white">Add new category</h2>
         </div>
 
         <div class="add-category-body mt-5 py-5 container border rounded-3 text-center">
-            <h2>Add New Category</h2>
             <form method="POST" action="{{ route('category.store') }}">
                 @csrf
                 <label for="name">Category Name</label>
@@ -40,7 +39,7 @@
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
-                <button class="btn-add-category" type="submit">Add Category</button>
+                <button class="Add btn-add-category" type="submit">Add Category</button>
             </form>
         </div>
     </section>

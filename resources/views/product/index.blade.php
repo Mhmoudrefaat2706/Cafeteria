@@ -6,10 +6,11 @@
         </a>
     </li>
     <li>
-        <a class="nav-link" href="{{ route('product.create') }}">
+        <a class="nav-link" href="{{ route('product.index') }}">
             All Products
         </a>
     </li>
+
 @endsection
 @section('content')
     <div class="container w-100">
@@ -30,7 +31,7 @@
                             </div>
 
                             <div class="col-sm-4">
-                                <a href="{{ route('product.create') }}" class="btn btn-primary mb-3 ">Create New Product</a>
+                                <a href="{{ route('product.create') }}" class="btn Add btn-primary mb-3">Create New Product</a>
                                 @if (session('success'))
                                     <div class="alert alert-success">
                                         {{ session('success') }}
@@ -63,7 +64,7 @@
                                     <td>
                                         @if ($product->image)
                                             <img src="{{ asset('storage/' . $product->image) }}"
-                                                style="border-radius: 50%; align-content:center" class="h-50 w-50 "
+                                                style="border-radius: 50%;" class="h-50 w-50"
                                                 alt="Product Image">
                                         @endif
                                     </td>

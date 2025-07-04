@@ -6,7 +6,7 @@
         </a>
     </li>
     <li>
-        <a class="nav-link" href="{{ route('product.create') }}">
+        <a class="nav-link" href="{{ route('product.index') }}">
             All Products
         </a>
     </li>
@@ -18,7 +18,7 @@
     <section class="edit-product">
 
         <div class="add-product-header d-flex justify-content-center align-items-center text-white">
-            <h2>Edit Product</h2>
+            <h2 class="text-white">Edit Product</h2>
 
         </div>
         <div class="edit-product-header d-flex justify-content-center align-items-center text-white">
@@ -75,7 +75,7 @@
                         @endforeach
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary my-3">Update Product</button>
+                <button type="submit" class="btn Add btn-primary my-3">Update Product</button>
             </form>
         </div>
         {{-- <button class="btn-add-category">
