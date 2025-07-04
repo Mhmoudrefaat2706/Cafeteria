@@ -28,8 +28,9 @@
             </ul>
             {{--  --}}
             <div class="navbar-nav ms-auto">
+                {{-- old --}}
 
-                <ul class="navbar-nav ms-auto">
+                {{-- <ul class="navbar-nav ms-auto">
                     @guest
                         @if (Route::has('login'))
                             <li class="nav-item">
@@ -37,7 +38,21 @@
                                     <i class="fas fa-sign-in-alt me-1"></i>{{ __('Login') }}
                                 </a>
                             </li>
-                        @endif
+                        @endif --}}
+{{-- end old changes --}}
+
+{{-- new --}}
+                <a class="nav-link nav-item-custom" href="#"><i class="fas fa-home me-2"></i>Home</a>
+            <ul class="navbar-nav ms-auto">
+                @guest
+                    @if (Route::has('login'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">
+                                <i class="fas fa-sign-in-alt me-1"></i>{{ __('Login') }}
+                            </a>
+                        </li>
+                    @endif
+                    {{-- end of new changes --}}
 
                         @if (Route::has('register'))
                             <li class="nav-item">
