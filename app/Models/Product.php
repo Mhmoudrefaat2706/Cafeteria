@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Order;
 
 class Product extends Model
 {
@@ -14,8 +13,20 @@ class Product extends Model
         "description",
         "category_id",
     ];
-    public function orders(){
-        return $this->belongsToMany(Order::class)
-        ->withPivot('quantity','price','name')->withTimestamps();
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class, "orederDetails")
+            ->using(OrderProduct::class)
+            ->withPivot('quantity', 'price')
+            ->withTimestamps();
+    }
+    public function orderDetails()
+    {
+        return $this->hasMany(OrderProduct::class, 'product_id');
     }
 }

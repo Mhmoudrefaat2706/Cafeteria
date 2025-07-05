@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->enum('status', ['processing', 'out for delivery', 'done'])->default('processing');
+            $table->enum('status', ['processing', 'cancelled', 'done'])->default('processing');
             $table->decimal('amount', 10, 2);
             $table->text('notes')->nullable();
             $table->unsignedBigInteger('room_id');

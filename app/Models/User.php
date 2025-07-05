@@ -23,6 +23,7 @@ class User extends Authenticatable
         'avatar',
         'provider',
         'email_verified_at',
+        'image',
     ];
 
     protected $hidden = [
@@ -75,6 +76,11 @@ public function getAvatarAttribute($value)
 
         public function orders(){
         return $this->hasMany(Order::class);
+    }
+    // order
+    public function ordersWithDetails()
+    {
+        return $this->hasMany(Order::class)->with('orderDetails.product');
     }
 }
 
