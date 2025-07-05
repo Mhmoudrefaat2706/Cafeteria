@@ -12,18 +12,33 @@ class Order extends Model
         "amount",
         "room_id",
         "user_id",
+        "status",
         "quantity",
         "status",
         "date" => 'now()',
-        "created_at" => 'now()',
-        "updated_at" => 'now()',
+        // "created_at" => 'now()',
+        // "updated_at" => 'now()',
     ];
-
-    public function products(){
-        return $this->belongsToMany(Product::class)
-        ->withPivot('quantity','price','name')->withTimestamps();
-    }
+    
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function products(){
+        return $this->belongsToMany(Product::class, 'orderDetails')
+        ->withPivot('quantity','price','name')->withTimestamps();
+    }
+
+    public function canBeCancelled()
+    {
+        return $this->status === 'processing';
+    }
+    // ma
+    public function orderDetails()
+    {
+        return $this->hasMany(OrderProduct::class);
+    }
+
+   
+
 }
