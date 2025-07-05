@@ -4,9 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\AdminAddOrderController;
 use App\Http\Controllers\Auth\SocialController;
 use App\Http\Controllers\user\UserOrderController;
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/home/main', function () {
+    return view('home');
+});
 Route::get('/dashboard', function () {
     return view('dashboard.index');
 })->name('dashboard');
