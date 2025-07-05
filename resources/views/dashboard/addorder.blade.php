@@ -6,7 +6,11 @@
 
 
 @section('ordercontent')
-
+@if (session('message'))
+    <div id="flash-message" class="alert alert-success position-fixed top-0 end-0 m-3 z-3 shadow" style="min-width: 250px;">
+        {{ session('message') }}
+    </div>
+@endif
     <div class="container mt-4">
         <div class="row">
             <!-- Order Summary Card -->
@@ -179,4 +183,18 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded',function () {
+            
+
+            const flash=document.getElementById('flash-message');
+            if(flash){
+            setTimeout(()=>{
+                flash.style.transition='opacity 0.5s ease';
+                flash.style.opacity='0';
+                setTimeout(()=>flash.remove(),500);
+            },3000);
+        }
+    })
+    </script>
 @endsection

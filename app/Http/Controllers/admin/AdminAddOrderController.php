@@ -142,7 +142,9 @@ class AdminAddOrderController extends Controller
             ]);
         }
         session()->forget('cart');
-        return redirect()->route('products');
+        // return redirect()->route('products');
+        return redirect()->route('products')->with('message', 'Order confirmed');
+
     }
 
     /**
@@ -191,8 +193,7 @@ class AdminAddOrderController extends Controller
         $orderupdate->update([
             'status' => 'done'
         ]);
-        // return response()->json(["message" => "edited"], 200);
-        // return view('dashboard.orders', compact('orderupdate'));
+
         return redirect()->route('orders');
     }
 

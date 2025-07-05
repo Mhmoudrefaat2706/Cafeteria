@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,10 +23,11 @@
                 <a class="nav-link nav-item-custom" href="#"><i class="fas fa-home me-2"></i>Home</a>
                 <a class="nav-link nav-item-custom" href="#"><i class="fas fa-box me-2"></i>Products</a>
                 <a class="nav-link nav-item-custom" href="#"><i class="fas fa-users me-2"></i>Users</a>
-                <a class="nav-link nav-item-custom" href="{{ route(('products')) }}"><i
-                        class="fas fa-clipboard me-2"></i>Manual Order</a>
+                <a class="nav-link nav-item-custom" href="{{ route(('products')) }}">
+                    <i class="fa-solid fa-file-circle-plus"></i> </i> Manual Order</a>
                 <a class="nav-link nav-item-custom" href="#"><i class="fas fa-check-circle me-2"></i>Checks</a>
-                <a class="nav-link nav-item-custom" href="{{route('orders')}}"><i class="fas fa-clipboard me-2"></i>Orders</a>
+                <a class="nav-link nav-item-custom" href="{{route('orders')}}"><i
+                        class="fas fa-clipboard me-2"></i>Orders</a>
             </div>
 
             <ul class="navbar-nav ms-auto">
@@ -47,8 +49,10 @@
                     @endif
                 @else
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
-                            <div class="rounded-circle bg-white text-primary d-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle d-flex align-items-center" href="#"
+                            role="button" data-bs-toggle="dropdown">
+                            <div class="rounded-circle bg-white text-primary d-flex align-items-center justify-content-center me-2"
+                                style="width: 32px; height: 32px;">
                                 <i class="fas fa-user"></i>
                             </div>
                             {{ Auth::user()->name }}
@@ -62,7 +66,7 @@
                             <a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Profile Settings</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item text-danger" href="{{ route('logout') }}"
-                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <i class="fas fa-sign-out-alt me-2"></i>{{ __('Logout') }}
                             </a>
 
@@ -77,10 +81,13 @@
     </nav>
 
     <div class="container">
+        @yield('content')
+    </div>
+    <div class="container">
         <h1>@yield('title')</h1>
         @yield('ordercontent')
     </div>
-    
+
     <div class="container">
         <h1>@yield('order_title')</h1>
         @yield('orders')
@@ -88,4 +95,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
+
 </html>
