@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Order;
+use App\Models\OrderProduct;
 use App\Models\Room;
 use App\Http\Requests\StoreOrder;
 
@@ -125,7 +126,7 @@ class AdminAddOrderController extends Controller
 
         $quantity = array_sum(array_column($cartitems, 'quantity'));
         $order = Order::create([
-            'notes' => $request->note,
+            'notes' => $request->notes,
             'amount' => $total,
             'room_id' => $room->id,
             'user_id' => $user->id,
@@ -140,16 +141,38 @@ class AdminAddOrderController extends Controller
                 'name' => $cartitem['name'],
             ]);
         }
-        return to_route('products');
+        session()->forget('cart');
+        return redirect()->route('products');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function showOrders(Request $request)
     {
-        //
+        $ordersall = Order::all();
+        $orders = [];
+
+
+        foreach ($ordersall as $orderItem) {
+            $products = OrderProduct::where('order_id', $orderItem->id)->get();
+            $user = User::find($orderItem->user_id);
+            $orders[] = [
+                'orderId' => $orderItem->id,
+                'orderDate' => $orderItem->created_at,
+                'userName' => $user->name,
+                'roomNumber' => $orderItem->room_id,
+                'extNum' => $user->ext_num,
+                'products' => $products,
+                'orderStatus' => $orderItem->status,
+                'total' => $orderItem->amount
+            ];
+        }
+        // return response()->json(["msg" => "returned", "data" => $ordersarr]);
+        return view('dashboard.orders', compact('orders'));
     }
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -164,7 +187,13 @@ class AdminAddOrderController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $orderupdate = Order::find($id);
+        $orderupdate->update([
+            'status' => 'done'
+        ]);
+        // return response()->json(["message" => "edited"], 200);
+        // return view('dashboard.orders', compact('orderupdate'));
+        return redirect()->route('orders');
     }
 
     /**

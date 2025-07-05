@@ -13,6 +13,7 @@ class Order extends Model
         "room_id",
         "user_id",
         "quantity",
+        "status",
         "date" => 'now()',
         "created_at" => 'now()',
         "updated_at" => 'now()',
