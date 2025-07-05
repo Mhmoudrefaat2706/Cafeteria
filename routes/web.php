@@ -3,11 +3,27 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\AdminAddOrderController;
 use App\Http\Controllers\Auth\SocialController;
+
 use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\UserOrders\UserOrderController;
 use GuzzleHttp\Middleware;
 use Illuminate\Routing\RouteUri;
+
+
+use App\Http\Controllers\Admin\UserController;
+
+Route::get('/home/main', function () {
+    return view('home');
+});
+
+Route::get('/dashboard', function () {
+   return view('admin.dashboard.index');
+})->name('dashboard');
+
+
+
+
 
 Route::get('/', function () {
     if (auth()->check()) {
@@ -35,6 +51,24 @@ Route::middleware('web')->group(function () {
 // Admin Routes
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/dashboard/home', [AdminAddOrderController::class, 'index'])->name('dashboard.home');
+
+    Route::get('/admin-add-order', [AdminAddOrderController::class, 'index'])->name('products');
+    Route::get('/add-to-cart/{id}', [AdminAddOrderController::class, 'addToCart'])->name('addtocart');
+    Route::get('/removefromcart/{id}', [AdminAddOrderController::class, 'removeFromCart'])->name('removeFromCart');
+    Route::get('/cart/decrease-quantity/{id}', [AdminAddOrderController::class, 'decreaseQuantity'])->name('decreaseQuantity');
+    Route::get('/cart/increase-quantity/{id}', [AdminAddOrderController::class, 'increaseQuantity'])->name('increaseQuantity');
+    Route::post('/admin-add-order/addorder', [AdminAddOrderController::class, 'store'])->name('addOrder');
+
+        // users management
+  Route::resource('admin/users', UserController::class)->names([
+    'index' => 'users.index',
+    'create' => 'users.create',
+    'store' => 'users.store',
+    'edit' => 'users.edit',
+    'update' => 'users.update',
+    'destroy' => 'users.destroy',
+]);
+
 });
 
 
@@ -108,3 +142,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/my-orders/{order}', [UserOrderController::class, 'show'])->name('orders.show');
     Route::post('/my-orders/{order}/cancel', [UserOrderController::class, 'cancel'])->name('orders.cancel');
 });
+
+// Route::get('/admin-add-order', [AdminAddOrderController::class, 'index'])->name('products');
+// Route::get('/add-to-cart/{id}', [AdminAddOrderController::class, 'addToCart'])->name('addtocart');
+// Route::get('/removefromcart/{id}', [AdminAddOrderController::class, 'removeFromCart'])->name('removeFromCart');
+// Route::get('/cart/decrease-quantity/{id}', [AdminAddOrderController::class, 'decreaseQuantity'])->name('decreaseQuantity');
+// Route::get('/cart/increase-quantity/{id}', [AdminAddOrderController::class, 'increaseQuantity'])->name('increaseQuantity');
+// Route::post('/admin-add-order/addorder', [AdminAddOrderController::class, 'store'])->name('addOrder');
+
+Route::get('/dashboard/orders',[AdminAddOrderController::class,'showOrders'])->name('orders');
+Route::put('/order/update/{id}',[AdminAddOrderController::class,'update'])->name('deliverorder');

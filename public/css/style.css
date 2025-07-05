@@ -120,6 +120,7 @@ body {
     border-color: var(--primary-gold);
     box-shadow: 0 0 0 0.2rem rgba(255, 180, 0, 0.25);
 }
+
 /* menu */
 .menu-header {
     background-image: url("../images/one\ size/menu-title.jpg");

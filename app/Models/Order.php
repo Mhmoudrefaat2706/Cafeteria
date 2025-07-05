@@ -14,6 +14,7 @@ class Order extends Model
         "user_id",
         "status",
         "quantity",
+        "status",
         "date" => 'now()',
         // "created_at" => 'now()',
         // "updated_at" => 'now()',
