@@ -28,7 +28,7 @@
                     <!-- Order 1 -->
                     @foreach ($orders as $order)
                         <div class="card order-card mb-4">
-                            <div class="card-header order-header">
+                            <div class="card-header order-header order-header-allorders">
                                 <div class="row align-items-center">
                                     <div class="col-md-3">
                                         <small class="text-muted">Order Date</small>

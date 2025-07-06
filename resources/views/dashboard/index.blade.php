@@ -91,6 +91,25 @@
         <h1>@yield('order_title')</h1>
         @yield('orders')
     </div>
+
+    <footer class="bg-coffee text-white py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h5><i class="fas fa-coffee me-2"></i>Golden Bean Cafeteria</h5>
+                <p class="mb-0">Your perfect coffee experience awaits.</p>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <p class="mb-0">© 2025 Golden Bean. All rights reserved.</p>
+                <div class="mt-2">
+                    <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>

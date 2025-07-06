@@ -88,7 +88,7 @@ body {
 
 .badge {
     background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%) !important;
-    color: #f54a00 !important;
+    color: wheat !important;
     font-weight: 600;
     border: 1px solid #d68910;
 }
@@ -135,8 +135,6 @@ body {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-
-
 .product-image {
     width: 50%;
     height: 50%;
@@ -151,6 +149,7 @@ body {
     font-weight: bold;
 }
 
+/* manual order page */
 .btn-primary:hover {
     background-color: var(--medium-brown);
     border-color: var(--medium-brown);
@@ -207,6 +206,100 @@ body {
 .form-select:focus {
     border-color: var(--primary-gold);
     box-shadow: 0 0 0 0.2rem rgba(255, 180, 0, 0.25);
+}
+
+/* manual order page  */
+
+/* all orders admin page  */
+.btn-primary-custom {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+.btn-primary-custom:hover {
+    background-color: var(--tertiary-color);
+    border-color: var(--tertiary-color);
+    color: white;
+}
+
+.order-card {
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #d48734;
+}
+
+.order-header {
+    background-color: var(--quaternary-color);
+    border-bottom: 2px solid var(--tertiary-color);
+    padding: 1rem;
+}
+
+.order-header-allorders {
+    background-color: #f19350;
+
+}
+
+.beverage-item {
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: rgba(245, 241, 234, 0.5);
+    transition: transform 0.2s ease;
+    position: relative;
+    border: 1px solid #ec9658;
+}
+
+.beverage-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px #ec9658;
+}
+
+.beverage-icon {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.beverage-price {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background-color: var(--primary-color) !important;
+    color: var(--secondary-color) !important;
+    font-weight: 600;
+}
+
+.beverage-name {
+    font-weight: 600;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.beverage-quantity .badge {
+    background-color: var(--tertiary-color) !important;
+    font-size: 1rem;
+    padding: 0.5rem 0.75rem;
+}
+
+.total-amount {
+    font-weight: 700;
+    padding: 1rem;
+    background-color: rgba(255, 180, 0, 0.1);
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
 }
 
 /* menu */
@@ -481,10 +574,8 @@ table.table td .add {
 .badge {
     color: rgb(235, 213, 195);
     background-color: rgba(71, 45, 24, 0.725);
-    position: absolute;
     font-size: .9rem;
     padding: 5px;
-
 }
 
 .collapse {
@@ -494,7 +585,7 @@ table.table td .add {
 
 a {
     text-decoration: none;
-    color: red;
+    color: rgb(255, 184, 54);
 }
 
 a:hover,
@@ -511,7 +602,7 @@ label {
 }
 
 /* filter */
-.btn {
+/* .btn {
     border: #4b2e05 solid .5px;
     color: #4b2e05;
 
@@ -521,7 +612,7 @@ label {
     color: #dab49d;
     background-color: #4f3818;
 
-}
+} */
 
 .Add {
     color: #e9e9e9;
