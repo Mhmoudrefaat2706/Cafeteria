@@ -7,11 +7,11 @@
             Home
         </a>
     </li> --}}
-    <li>
+    {{-- <li>
         <a class="nav-link" href="{{ route('user.orders') }}">
             My Orders
         </a>
-    </li>
+    </li> --}}
     <li>
         <a class="nav-link" href="{{ route('user.menu') }}">
             Menu
@@ -50,8 +50,8 @@
                                 @endif
                             </span>
                             <a href="{{ route('user.orders') }}" class="btn btn-outline-secondary btn-sm ms-3">
-            Back to All Orders
-        </a>
+                                Back to All Orders
+                            </a>
                         </div>
                     @else
                         <form method="GET" action="{{ route('user.orders') }}" class="row g-2 mb-4">
@@ -99,11 +99,10 @@
                                             </td>
                                             <td>
                                                 <span
-                                                    class=" 
+                                                    class="
                                                     @if ($order->status === 'processing') text-warning
                                                     @elseif($order->status === 'done') text-success
-                                                    @elseif($order->status === 'cancelled') text-danger
-                                                    @endif">
+                                                    @elseif($order->status === 'cancelled') text-danger @endif">
                                                     {{ ucfirst($order->status) }}
                                                 </span>
                                             </td>
@@ -139,9 +138,11 @@
                                                                 <div class="card border-0 text-center">
                                                                     <div class="position-relative">
                                                                         @if ($detail->product && $detail->product->image)
-                                                                            <img src="{{ asset('storage/' . $detail->product->image) }}"
+                                                                            <img src="{{ asset('images/one size/' . $detail->product->image) }}"
                                                                                 alt="Product Image"
-                                                                                class="card-img-top h-100">
+                                                                                class="img-fluid rounded shadow-sm"
+                                                                                style="height: 70px; width: 70px; object-fit: cover; margin: auto;">
+
                                                                             <span class="badge top-0 end-0 m-2">
                                                                                 {{ number_format($detail->price, 2) }}EGP
                                                                             </span>

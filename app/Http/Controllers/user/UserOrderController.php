@@ -103,6 +103,7 @@ public function store(Request $request)
         'amount' => $total,
         'room_id' => $request->room_id,
         'user_id' => auth()->id(),
+        'status' => 'processing',
         'date' => now(),
         'quantity' => array_sum(array_column($cartitems, 'quantity')),
     ]);

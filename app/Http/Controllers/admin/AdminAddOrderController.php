@@ -28,6 +28,7 @@ class AdminAddOrderController extends Controller
      */
     public function calculateTotal($cartitems)
     {
+
         $cartitems = session('cart', []);
         $total = 0;
         foreach ($cartitems as $cartitem) {
@@ -124,6 +125,7 @@ class AdminAddOrderController extends Controller
         $user = User::find($request->user_id);
 
 
+
         $quantity = array_sum(array_column($cartitems, 'quantity'));
         $order = Order::create([
             'notes' => $request->notes,
@@ -152,7 +154,8 @@ class AdminAddOrderController extends Controller
      */
     public function showOrders(Request $request)
     {
-        $ordersall = Order::all();
+        $ordersall = Order::orderBy('created_at', 'desc')->get();
+
         $orders = [];
 
 
@@ -164,7 +167,7 @@ class AdminAddOrderController extends Controller
                 'orderDate' => $orderItem->created_at,
                 'userName' => $user->name,
                 'roomNumber' => $orderItem->room_id,
-                'extNum' => $user->ext_num,
+                'extNum' => $user->ext_num ,
                 'products' => $products,
                 'orderStatus' => $orderItem->status,
                 'total' => $orderItem->amount

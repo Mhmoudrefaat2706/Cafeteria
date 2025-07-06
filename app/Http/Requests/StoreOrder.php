@@ -22,7 +22,7 @@ class StoreOrder extends FormRequest
     public function rules(): array
     {
         return [
-            "notes"=> "required|max:150",
+            "notes"=> "max:150",
             "room_id"=> "required",
             "user_id"=> "required",
         ];

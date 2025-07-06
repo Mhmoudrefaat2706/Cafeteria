@@ -1,25 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Login - Cafeteria System</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>Login - Cafeteria System</title>
     <style>
         :root {
-            --primary-brown: #8B4513;
-            --dark-brown: #5D2F0A;
-            --light-brown: #D2B48C;
-            --cream: #F5F5DC;
-            --gold: #DAA520;
-            --coffee-dark: #3C2414;
+            --primary-gold: #f54a00;
+            --coffee-brown: #6f4e37;
+            --medium-brown: #a47551;
+            --light-brown: #dab49d;
+            --cream: #f5f1ea;
+            --success: #27ae60;
+            --reject: #e74c3c;
             --warm-white: #FFFEF7;
-        }
-
-        * {
-            font-family: 'Tajawal', sans-serif;
+            --coffee-dark: #3C2414;
         }
 
         body {
@@ -35,26 +38,25 @@
             justify-content: center;
             position: relative;
             overflow-x: hidden;
+            font-family: "Poppins", sans-serif;
         }
 
-
-    body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image:
-        radial-gradient(circle at 20% 80%, rgba(139, 69, 19, 0.1) 2px, transparent 2px),
-        radial-gradient(circle at 80% 20%, rgba(218, 165, 32, 0.1) 1px, transparent 1px),
-        radial-gradient(circle at 40% 40%, rgba(139, 69, 19, 0.05) 1px, transparent 1px);
-    background-size: 50px 50px, 30px 30px, 70px 70px;
-    background-attachment: fixed;
-    animation: float 20s ease-in-out infinite;
-    z-index: -1;
-}
-
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle at 20% 80%, rgba(139, 69, 19, 0.1) 2px, transparent 2px),
+                radial-gradient(circle at 80% 20%, rgba(218, 165, 32, 0.1) 1px, transparent 1px),
+                radial-gradient(circle at 40% 40%, rgba(139, 69, 19, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px, 30px 30px, 70px 70px;
+            background-attachment: fixed;
+            animation: float 20s ease-in-out infinite;
+            z-index: -1;
+        }
 
         @keyframes float {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
@@ -64,6 +66,8 @@
         .login-container {
             position: relative;
             z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .card {
@@ -88,14 +92,15 @@
         .card-header {
             background: linear-gradient(135deg,
                 var(--coffee-dark) 0%,
-                var(--dark-brown) 30%,
-                var(--primary-brown) 70%,
-                var(--gold) 100%);
+                var(--medium-brown) 30%,
+                var(--coffee-brown) 70%,
+                var(--primary-gold) 100%);
             color: var(--warm-white);
             text-align: center;
             position: relative;
             padding: 2rem;
             border: none;
+            border-radius: 20px 20px 0 0 !important;
         }
 
         .card-header::before {
@@ -130,7 +135,7 @@
             top: 50%;
             transform: translateY(-50%);
             font-size: 3rem;
-            color: var(--gold);
+            color: var(--primary-gold);
             animation: steam 3s ease-in-out infinite;
             z-index: 2;
         }
@@ -164,7 +169,7 @@
         }
 
         .form-control:focus {
-            border-color: var(--gold);
+            border-color: var(--primary-gold);
             box-shadow: 0 0 0 0.25rem rgba(218, 165, 32, 0.25);
             background: var(--warm-white);
             transform: translateY(-2px);
@@ -175,7 +180,7 @@
         }
 
         .btn-cafeteria {
-            background: linear-gradient(135deg, var(--primary-brown), var(--gold));
+            background: linear-gradient(135deg, var(--coffee-brown), var(--primary-gold));
             color: var(--warm-white);
             border: none;
             border-radius: 12px;
@@ -203,7 +208,7 @@
         }
 
         .btn-cafeteria:hover {
-            background: linear-gradient(135deg, var(--gold), var(--primary-brown));
+            background: linear-gradient(135deg, var(--primary-gold), var(--coffee-brown));
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(139, 69, 19, 0.3);
         }
@@ -285,20 +290,20 @@
         }
 
         .login-footer a {
-            color: var(--primary-brown);
+            color: var(--coffee-brown);
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
         }
 
         .login-footer a:hover {
-            color: var(--gold);
+            color: var(--primary-gold);
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .form-check-input:checked {
-            background-color: var(--gold);
-            border-color: var(--gold);
+            background-color: var(--primary-gold);
+            border-color: var(--primary-gold);
         }
 
         .floating-elements {
@@ -341,7 +346,6 @@
             50% { transform: translateY(-20px) rotate(180deg); opacity: 0.3; }
         }
 
-
         @media (max-width: 768px) {
             .card-body {
                 padding: 1.5rem;
@@ -363,161 +367,161 @@
     </style>
 </head>
 <body>
+    <div class="floating-elements">
+        <i class="fas fa-coffee floating-cup"></i>
+        <i class="fas fa-mug-hot floating-cup"></i>
+        <i class="fas fa-coffee-bean floating-cup"></i>
+    </div>
 
-<div class="floating-elements">
-    <i class="fas fa-coffee floating-cup"></i>
-    <i class="fas fa-mug-hot floating-cup"></i>
-    <i class="fas fa-coffee-bean floating-cup"></i>
-</div>
+    <div class="container login-container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6 col-xl-5">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Welcome to Golden Bean</h4>
+                        <i class="fas fa-mug-hot header-icon"></i>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="{{ route('login') }}">
+                            @csrf
 
-<div class="container login-container">
-    <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-6 col-xl-5">
-            <div class="card">
-                <div class="card-header">
-                    <h4><i class="fas fa-sign-in-alt me-3"></i>Welcome to the Cafeteria</h4>
-                    <i class="fas fa-mug-hot header-icon"></i>
-                </div>
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="mb-4">
-                            <label for="email" class="form-label">
-                                <i class="fas fa-envelope me-2 text-warning"></i>Email Address
-                            </label>
-                            <input type="email" class="form-control" name="email" id="email"
-                                   placeholder="Enter your email" required>
-                            <div class="form-text-error" id="email-error"></div>
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="password" class="form-label">
-                                <i class="fas fa-lock me-2 text-warning"></i>Password
-                            </label>
-                            <input type="password" class="form-control" name="password" id="password"
-                                   placeholder="Enter your password" required>
-                            <div class="form-text-error" id="password-error"></div>
-                        </div>
-
-                        <div class="d-flex justify-content-between align-items-center mb-4">
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" name="remember" id="remember">
-                                <label class="form-check-label" for="remember">Remember me</label>
+                            <div class="mb-4">
+                                <label for="email" class="form-label">
+                                    <i class="fas fa-envelope me-2 text-warning"></i>Email Address
+                                </label>
+                                <input type="email" class="form-control" name="email" id="email"
+                                       placeholder="Enter your email" required>
+                                <div class="form-text-error" id="email-error"></div>
                             </div>
-                            <a href="{{ route('password.request') }}" class="text-decoration-none">Forgot password?</a>
-                        </div>
 
-                        <button type="submit" class="btn btn-cafeteria w-100 mb-3">
-                            <i class="fas fa-sign-in-alt me-2"></i>Login
-                        </button>
-
-                        <div class="divider">
-                            <span>Or login with</span>
-                        </div>
-
-                        <div class="row g-2">
-                            <div class="col-4">
-                                <a href="{{ route('auth.google') }}" class="btn btn-outline-danger social-btn google w-100">
-                                    <i class="fab fa-google"></i>
-                                </a>
+                            <div class="mb-4">
+                                <label for="password" class="form-label">
+                                    <i class="fas fa-lock me-2 text-warning"></i>Password
+                                </label>
+                                <input type="password" class="form-control" name="password" id="password"
+                                       placeholder="Enter your password" required>
+                                <div class="form-text-error" id="password-error"></div>
                             </div>
-                            <div class="col-4">
-                                <a href="{{ route('auth.facebook') }}" class="btn btn-outline-primary social-btn facebook w-100">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                            </div>
-                            <div class="col-4">
-                                <a href="{{ url('auth/github') }}" class="btn btn-outline-dark social-btn github w-100">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
 
-                        <div class="login-footer">
-                            <p class="mb-0">Don't have an account?
-                                <a href="{{ route('register') }}">Create a new account</a>
-                            </p>
-                        </div>
-                    </form>
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" name="remember" id="remember">
+                                    <label class="form-check-label" for="remember">Remember me</label>
+                                </div>
+                                <a href="{{ route('password.request') }}" class="text-decoration-none">Forgot password?</a>
+                            </div>
+
+                            <button type="submit" class="btn btn-cafeteria w-100 mb-3">
+                                <i class="fas fa-sign-in-alt me-2"></i>Login
+                            </button>
+
+                            <div class="divider">
+                                <span>Or login with</span>
+                            </div>
+
+                            <div class="row g-2">
+                                <div class="col-4">
+                                    <a href="{{ route('auth.google') }}" class="btn btn-outline-danger social-btn google w-100">
+                                        <i class="fab fa-google"></i>
+                                    </a>
+                                </div>
+                                <div class="col-4">
+                                    <a href="{{ route('auth.facebook') }}" class="btn btn-outline-primary social-btn facebook w-100">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                </div>
+                                <div class="col-4">
+                                    <a href="{{ url('auth/github') }}" class="btn btn-outline-dark social-btn github w-100">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="login-footer">
+                                <p class="mb-0">Don't have an account?
+                                    <a href="{{ route('register') }}">Create a new account</a>
+                                </p>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<script>
-    const loginForm = document.querySelector('form');
-    const emailInput = document.getElementById('email');
-    const passwordInput = document.getElementById('password');
-    const emailError = document.getElementById('email-error');
-    const passwordError = document.getElementById('password-error');
+    <script>
+        const loginForm = document.querySelector('form');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const emailError = document.getElementById('email-error');
+        const passwordError = document.getElementById('password-error');
 
-    const inputs = document.querySelectorAll('.form-control');
-    inputs.forEach(input => {
-        input.addEventListener('focus', function() {
-            this.parentElement.style.transform = 'scale(1.02)';
-            this.parentElement.style.transition = 'transform 0.3s ease';
+        const inputs = document.querySelectorAll('.form-control');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+                this.parentElement.style.transition = 'transform 0.3s ease';
+            });
+
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
         });
 
-        input.addEventListener('blur', function() {
-            this.parentElement.style.transform = 'scale(1)';
+        loginForm.addEventListener('submit', function (e) {
+            emailError.textContent = '';
+            passwordError.textContent = '';
+            let isValid = true;
+
+            emailInput.classList.remove('is-invalid');
+            passwordInput.classList.remove('is-invalid');
+
+            if (!emailInput.value.trim()) {
+                emailError.textContent = 'Email is required';
+                emailInput.classList.add('is-invalid');
+                isValid = false;
+            } else if (!isValidEmail(emailInput.value)) {
+                emailError.textContent = 'Please enter a valid email address';
+                emailInput.classList.add('is-invalid');
+                isValid = false;
+            }
+
+            if (!passwordInput.value.trim()) {
+                passwordError.textContent = 'Password is required';
+                passwordInput.classList.add('is-invalid');
+                isValid = false;
+            } else if (passwordInput.value.length < 6) {
+                passwordError.textContent = 'Password must be at least 6 characters';
+                passwordInput.classList.add('is-invalid');
+                isValid = false;
+            }
+
+            if (!isValid) {
+                e.preventDefault();
+                const card = document.querySelector('.card');
+                card.style.animation = 'shake 0.5s ease-in-out';
+                setTimeout(() => {
+                    card.style.animation = '';
+                }, 500);
+            }
         });
-    });
 
-    loginForm.addEventListener('submit', function (e) {
-        emailError.textContent = '';
-        passwordError.textContent = '';
-        let isValid = true;
-
-        emailInput.classList.remove('is-invalid');
-        passwordInput.classList.remove('is-invalid');
-
-        if (!emailInput.value.trim()) {
-            emailError.textContent = 'Email is required';
-            emailInput.classList.add('is-invalid');
-            isValid = false;
-        } else if (!isValidEmail(emailInput.value)) {
-            emailError.textContent = 'Please enter a valid email address';
-            emailInput.classList.add('is-invalid');
-            isValid = false;
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
         }
 
-        if (!passwordInput.value.trim()) {
-            passwordError.textContent = 'Password is required';
-            passwordInput.classList.add('is-invalid');
-            isValid = false;
-        } else if (passwordInput.value.length < 6) {
-            passwordError.textContent = 'Password must be at least 6 characters';
-            passwordInput.classList.add('is-invalid');
-            isValid = false;
-        }
+        const style = document.createElement('style');
+        style.textContent = `
+            .form-control.is-invalid {
+                border-color: #dc3545;
+                box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+                animation: shake 0.5s ease-in-out;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 
-        if (!isValid) {
-            e.preventDefault();
-            const card = document.querySelector('.card');
-            card.style.animation = 'shake 0.5s ease-in-out';
-            setTimeout(() => {
-                card.style.animation = '';
-            }, 500);
-        }
-    });
-
-    function isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    }
-
-    const style = document.createElement('style');
-    style.textContent = `
-        .form-control.is-invalid {
-            border-color: #dc3545;
-            box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
-            animation: shake 0.5s ease-in-out;
-        }
-    `;
-    document.head.appendChild(style);
-</script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

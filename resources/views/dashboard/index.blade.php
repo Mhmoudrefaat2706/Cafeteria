@@ -9,11 +9,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <title>@yield('page_name')</title>
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
+
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand fw-bold" href="#"><i class="fas fa-coffee me-2"></i>Cafeteria System</a>
@@ -21,11 +26,12 @@
                 <a class="nav-link nav-item-custom" href="#"><i class="fas fa-home me-2"></i>Home</a>
                 <a class="nav-link nav-item-custom" href="{{ route('product.index') }}"><i
                         class="fas fa-box me-2"></i>Products</a>
-                <a class="nav-link nav-item-custom" href="#"><i class="fas fa-users me-2"></i>Users</a>
-                <a class="nav-link nav-item-custom" href="{{ route(('products')) }}">
+                <a class="nav-link nav-item-custom" href="{{ route('users.index') }}"><i
+                        class="fas fa-users me-2"></i>Users</a>
+                <a class="nav-link nav-item-custom" href="{{ route('products') }}">
                     <i class="fa-solid fa-file-circle-plus"></i> </i> Manual Order</a>
                 <a class="nav-link nav-item-custom" href="#"><i class="fas fa-check-circle me-2"></i>Checks</a>
-                <a class="nav-link nav-item-custom" href="{{route('orders')}}"><i
+                <a class="nav-link nav-item-custom" href="{{ route('orders') }}"><i
                         class="fas fa-clipboard me-2"></i>Orders</a>
             </div>
 
@@ -50,12 +56,12 @@
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle d-flex align-items-center" href="#"
                             role="button" data-bs-toggle="dropdown">
-                            <div class="rounded-circle bg-white text-primary d-flex align-items-center justify-content-center me-2"
-                                style="width: 32px; height: 32px;">
-                                <i class="fas fa-user"></i>
-                            </div>
+                            <img src="{{ Auth::user()->image && file_exists(public_path(Auth::user()->image)) ? asset(Auth::user()->image) : asset('images/no-photo.png') }}"
+                                alt="User Avatar" class="rounded-circle border me-2"
+                                style="width: 40px; height: 40px; object-fit: cover;">
+
                             {{ Auth::user()->name }}
-                            @if(Auth::user()->role === 'admin')
+                            @if (Auth::user()->role === 'admin')
                                 <span class="badge bg-warning text-dark ms-2">Admin</span>
                             @endif
                         </a>
@@ -79,36 +85,38 @@
         </div>
     </nav>
 
-    <div class="container">
-        @yield('content')
-    </div>
-    <div class="container">
-        <h1>@yield('title')</h1>
-        @yield('ordercontent')
-    </div>
+    <main class="flex-grow-1">
+        <div class="container">
+            @yield('content')
+        </div>
+        <div class="container">
+            <h1>@yield('title')</h1>
+            @yield('ordercontent')
+        </div>
 
-    <div class="container">
-        <h1>@yield('order_title')</h1>
-        @yield('orders')
-    </div>
+        <div class="container">
+            <h1>@yield('order_title')</h1>
+            @yield('orders')
+        </div>
+    </main>
 
     <footer class="bg-coffee text-white py-4">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <h5><i class="fas fa-coffee me-2"></i>Golden Bean Cafeteria</h5>
-                <p class="mb-0">Your perfect coffee experience awaits.</p>
-            </div>
-            <div class="col-md-6 text-md-end">
-                <p class="mb-0">© 2025 Golden Bean. All rights reserved.</p>
-                <div class="mt-2">
-                    <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-coffee me-2"></i>Golden Bean Cafeteria</h5>
+                    <p class="mb-0">Your perfect coffee experience awaits.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">© 2025 Golden Bean. All rights reserved.</p>
+                    <div class="mt-2">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
 
