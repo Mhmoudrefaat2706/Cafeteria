@@ -136,11 +136,11 @@
                     </div>
                     <div class="card-body">
                         <div class="row g-3">
-                            @if (session('error'))
+<!--                             @if (session('error'))
                                 <div class="alert alert-danger">
                                     {{ session('error') }}
                                 </div>
-                            @endif
+                            @endif -->
                             @if (!empty($results) && count($results) > 0)
                                 @foreach ($results as $result)
                                     <a href="{{ route('addtocart', $result->id) }}"
@@ -155,8 +155,8 @@
 
                                 @endforeach
                             @else
-                                <p class="bg bg-danger-subtle text-white p-3"
-                                    style="border-radius:8px !important;  color: brown !important;">No Products Found!</p>
+<!--                                 <p class="bg bg-danger-subtle text-white p-3"
+                                    style="border-radius:8px !important;  color: brown !important;">No Products Found!</p> -->
                             @endif
 
 
