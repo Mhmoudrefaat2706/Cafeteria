@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->string('role')->nullable()->default('user');
+            // $table->string('role')->nullable()->default('user');
+            $table->enum('role', ['user', 'admin'])->default('user');
             $table->unsignedBigInteger('room_id')->nullable();
             $table->unsignedBigInteger('ext_num')->nullable();
         });

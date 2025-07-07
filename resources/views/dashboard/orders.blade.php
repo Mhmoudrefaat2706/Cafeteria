@@ -60,6 +60,12 @@
                                                     <i class="fas fa-check me-1"></i>
                                                     Delivered
                                                 </button>
+                                                </button>
+                                            @else
+                                                <button type="submit" class="btn btn-secondary  btn-sm" disabled>
+                                                    <i class="fas fa-times text-danger me-1"></i>
+                                                    Canceled
+                                                </button>
                                             @endif
                                         </form>
                                     </div>

@@ -14,7 +14,7 @@ class ProductController extends Controller
 {
      public function __construct()
     {
-        $this->middleware('auth'); 
+        $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -58,8 +58,12 @@ class ProductController extends Controller
         $product->category_id = $request->category_id;
 
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('products', 'public');
-            $product->image = $imagePath;
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension(); // اسم مميز
+            $destinationPath = public_path('images/one size');
+            $image->move($destinationPath, $imageName);
+
+            $product->image = $imageName;
         }
         $product->save();
         return to_route('product.index');
@@ -95,14 +99,21 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->category_id = $request->category_id;
 
-      if ($request->hasFile('image')) {
-        // Delete old image if exists
-        if ($product->image) {
-            Storage::disk('public')->delete($product->image);
-        }
-        $imagePath = $request->file('image')->store('products', 'public');
-        $product->image = $imagePath; 
+ if ($request->hasFile('image')) {
+
+    $oldImagePath = public_path('images/one size/' . $product->image);
+    if (file_exists($oldImagePath)) {
+        unlink($oldImagePath);
     }
+
+    $image = $request->file('image');
+    $imageName = time() . '.' . $image->getClientOriginalExtension();
+    $destinationPath = public_path('images/one size');
+    $image->move($destinationPath, $imageName);
+
+    $product->image = $imageName;
+}
+
         $product->update();
         return to_route('product.index');
     }

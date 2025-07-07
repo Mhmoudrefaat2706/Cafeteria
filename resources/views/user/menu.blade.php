@@ -2,7 +2,7 @@
 @section('content')
 
 @section('navbar')
-    <li>
+    {{-- <li>
         <a class="nav-link" href="{{ route('user.home') }}">
             Home
         </a>
@@ -11,7 +11,7 @@
         <a class="nav-link" href="{{ route('user.orders') }}">
             My Orders
         </a>
-    </li>
+    </li> --}}
     <li>
         <a class="nav-link" href="{{ route('user.menu') }}">
             Menu
@@ -51,9 +51,9 @@
                                 <div class="col-md-6">
                                     <div>
                                         <div class="menu-item d-flex align-items-center justify-content-between">
-                                            
+
                                             @if ($product->image)
-                                            <img src="{{ asset('storage/' . $product->image) }}"
+                                            <img src="{{ asset('images/one size/' .$product->image) }}"
                                                 style="border-radius: 50%; align-content:center; width:80px; height: 80px;"
                                                 alt="Product Image">
                                         @endif

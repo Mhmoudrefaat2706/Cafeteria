@@ -10,7 +10,6 @@
             All Products
         </a>
     </li>
-
 @endsection
 @section('content')
     <div class="container w-100">
@@ -31,7 +30,8 @@
                             </div>
 
                             <div class="col-sm-4">
-                                <a href="{{ route('product.create') }}" class="btn Add btn-primary mb-3">Create New Product</a>
+                                <a href="{{ route('product.create') }}" class="btn Add btn-primary mb-3">Create New
+                                    Product</a>
                                 @if (session('success'))
                                     <div class="alert alert-success">
                                         {{ session('success') }}
@@ -61,13 +61,16 @@
                                     <td>{{ $product->description }}</td>
                                     <td>${{ number_format($product->price, 2) }}</td>
                                     <td>{{ $product->category->name }}</td>
-                                    <td>
+                                    <td class="text-center align-middle">
                                         @if ($product->image)
-                                            <img src="{{ asset('storage/' . $product->image) }}"
-                                                style="border-radius: 50%;" class="h-50 w-50"
+                                            <img src="{{ asset('images/one size/' . $product->image) }}"
+                                                style="width: 70px; height: 70px; object-fit: cover; border-radius: 10px;"
                                                 alt="Product Image">
+                                        @else
+                                            <span>No Image</span>
                                         @endif
                                     </td>
+
                                     <td></td>
                                     <td>
                                         <a href="{{ route('product.edit', $product->id) }}" class="edit" title="Add"

@@ -1,4 +1,4 @@
-@extends('dashboard.index')
+@extends('layouts.app')
 
 @section('content')
     <section id="home" class="hero-section py-5">
