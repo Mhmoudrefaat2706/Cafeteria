@@ -18,7 +18,8 @@
         <div class="container">
             <a class="navbar-brand fw-bold" href="#"><i class="fas fa-coffee me-2"></i>Cafeteria System</a>
             <div class="navbar-nav ms-auto">
-                <a class="nav-link nav-item-custom" href="#"><i class="fas fa-home me-2"></i>Home</a>
+                <a class="nav-link nav-item-custom" href="{{ route('main-home') }}"><i
+                        class="fas fa-home me-2"></i>Home</a>
                 <a class="nav-link nav-item-custom" href="{{ route('product.index') }}"><i
                         class="fas fa-box me-2"></i>Products</a>
                 <a class="nav-link nav-item-custom" href="#"><i class="fas fa-users me-2"></i>Users</a>
@@ -93,22 +94,22 @@
     </div>
 
     <footer class="bg-coffee text-white py-4">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <h5><i class="fas fa-coffee me-2"></i>Golden Bean Cafeteria</h5>
-                <p class="mb-0">Your perfect coffee experience awaits.</p>
-            </div>
-            <div class="col-md-6 text-md-end">
-                <p class="mb-0">© 2025 Golden Bean. All rights reserved.</p>
-                <div class="mt-2">
-                    <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-coffee me-2"></i>Golden Bean Cafeteria</h5>
+                    <p class="mb-0">Your perfect coffee experience awaits.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">© 2025 Golden Bean. All rights reserved.</p>
+                    <div class="mt-2">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
 

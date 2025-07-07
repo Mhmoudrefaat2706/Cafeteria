@@ -142,7 +142,6 @@ class AdminAddOrderController extends Controller
             ]);
         }
         session()->forget('cart');
-        // return redirect()->route('products');
         return redirect()->route('products')->with('message', 'Order confirmed');
 
     }
@@ -170,7 +169,6 @@ class AdminAddOrderController extends Controller
                 'total' => $orderItem->amount
             ];
         }
-        // return response()->json(["msg" => "returned", "data" => $ordersarr]);
         return view('dashboard.orders', compact('orders'));
     }
 

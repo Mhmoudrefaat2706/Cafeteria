@@ -63,7 +63,7 @@
                                 @enderror
                                 <label class="form-label fw-bold">Notes</label>
                                 <textarea class="form-control" rows="3" placeholder="1 Tea Extra Sugar"
-                                    name="notes">{{ old('notes') }}</textarea>
+                                    name="notes"></textarea>
                             </div>
 
                             <!-- Room Selection -->

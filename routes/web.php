@@ -15,10 +15,10 @@ use App\Http\Controllers\Admin\UserController;
 
 Route::get('/home/main', function () {
     return view('home');
-});
+})->name('main-home');
 
 Route::get('/dashboard', function () {
-   return view('admin.dashboard.index');
+    return view('dashboard.index');
 })->name('dashboard');
 
 
@@ -59,15 +59,15 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/cart/increase-quantity/{id}', [AdminAddOrderController::class, 'increaseQuantity'])->name('increaseQuantity');
     Route::post('/admin-add-order/addorder', [AdminAddOrderController::class, 'store'])->name('addOrder');
 
-        // users management
-  Route::resource('admin/users', UserController::class)->names([
-    'index' => 'users.index',
-    'create' => 'users.create',
-    'store' => 'users.store',
-    'edit' => 'users.edit',
-    'update' => 'users.update',
-    'destroy' => 'users.destroy',
-]);
+    // users management
+    Route::resource('admin/users', UserController::class)->names([
+        'index' => 'users.index',
+        'create' => 'users.create',
+        'store' => 'users.store',
+        'edit' => 'users.edit',
+        'update' => 'users.update',
+        'destroy' => 'users.destroy',
+    ]);
 
 });
 
@@ -82,11 +82,11 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 
     // my orders page(for user)
     Route::get('/user/myOrders', [UserOrderController::class, 'index'])
-    ->name('user.orders');
+        ->name('user.orders');
     Route::get('/user/myOrders/{id}', [UserOrderController::class, 'show'])
-    ->name('user.orders.show');
+        ->name('user.orders.show');
     Route::post('/user/myOrders/{id}/cancel', [UserOrderController::class, 'cancel'])
-    ->name('user.orders.cancel');  
+        ->name('user.orders.cancel');
 
 
 
@@ -150,5 +150,5 @@ Route::middleware(['auth'])->group(function () {
 // Route::get('/cart/increase-quantity/{id}', [AdminAddOrderController::class, 'increaseQuantity'])->name('increaseQuantity');
 // Route::post('/admin-add-order/addorder', [AdminAddOrderController::class, 'store'])->name('addOrder');
 
-Route::get('/dashboard/orders',[AdminAddOrderController::class,'showOrders'])->name('orders');
-Route::put('/order/update/{id}',[AdminAddOrderController::class,'update'])->name('deliverorder');
+Route::get('/dashboard/orders', [AdminAddOrderController::class, 'showOrders'])->name('orders');
+Route::put('/order/update/{id}', [AdminAddOrderController::class, 'update'])->name('deliverorder');
