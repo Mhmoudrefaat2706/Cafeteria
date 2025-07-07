@@ -1,5 +1,12 @@
 @extends('layouts.app')
+@section('navbar')
+            <li class="nav-item">
+                <a class="nav-link nav-item-custom" href="{{ route('orders.index') }}">
+                    <i class="fas fa-home me-2"></i>My Orders
+                </a>
 
+            </li>
+            @endsection
 @section('content')
     <section id="home" class="hero-section py-5">
         <div class="container">
@@ -120,7 +127,7 @@
             </div>
         </div>
     </section>
-    <!-- <footer class="bg-coffee text-white py-4">
+    <footer class="bg-coffee text-white py-4">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -137,7 +144,7 @@
                 </div>
             </div>
         </div>
-    </footer> -->
+    </footer>
     <!-- <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-8">

@@ -21,7 +21,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#"><i class="fas fa-coffee me-2"></i>Cafeteria System</a>
+            <a class="navbar-brand fw-bold" href="{{route('freehome')}}"><i class="fas fa-coffee me-2"></i>Cafeteria System</a>
             <div class="navbar-nav ms-auto">
                 <a class="nav-link nav-item-custom" href="{{ route('main-home') }}"><i
                         class="fas fa-home me-2"></i>Home</a>
