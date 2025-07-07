@@ -1,5 +1,12 @@
 @extends('layouts.app')
+@section('navbar')
+            <li class="nav-item">
+                <a class="nav-link nav-item-custom" href="{{ route('orders.index') }}">
+                    <i class="fas fa-home me-2"></i>My Orders
+                </a>
 
+            </li>
+            @endsection
 @section('content')
     <section id="home" class="hero-section py-5">
         <div class="container">
