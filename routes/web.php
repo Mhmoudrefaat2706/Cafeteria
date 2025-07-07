@@ -15,7 +15,7 @@ use App\Http\Controllers\Admin\UserController;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('freehome');
 Route::get('/home/main', function () {
     return view('home');
 });
