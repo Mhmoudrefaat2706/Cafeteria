@@ -31,12 +31,7 @@
                 </a>
 
             </li>
-            <li class="nav-item">
-                <a class="nav-link nav-item-custom" href="{{ route('orders.index') }}">
-                    <i class="fas fa-home me-2"></i>My Orders
-                </a>
 
-            </li>
             @yield('navbar')
         </ul>
                <ul class="navbar-nav ms-auto">
