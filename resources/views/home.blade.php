@@ -120,7 +120,7 @@
             </div>
         </div>
     </section>
-    <footer class="bg-coffee text-white py-4">
+<!--     <footer class="bg-coffee text-white py-4">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -137,7 +137,7 @@
                 </div>
             </div>
         </div>
-    </footer>
+    </footer> -->
     <!-- <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-8">
