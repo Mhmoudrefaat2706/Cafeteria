@@ -42,19 +42,23 @@ class AdminAddOrderController extends Controller
         $total = $this->calculateTotal($cartitems);
         $search_value = $request->input('input_search');
 
-        if ($request->filled($search_value) && is_numeric($search_value)) {
+        if ($request->filled('input_search') && is_numeric($search_value)) {
             return redirect()->back()->with('error', 'Please enter a valid product name!');
         }
 
         $products = Product::all();
         $rooms = Room::all();
         $users = User::all();
-        $results = [];
+
+        $results = collect();
 
         if ($search_value) {
             $results = Product::where('name', 'like', "%{$search_value}%")->get();
+            if ($results->isEmpty()) {
+                return redirect()->back()->with('error', 'No product found with this name!');
+            }
         }
-        return view('dashboard.addorder', compact('products', 'results', 'rooms', 'users', 'cartitems', 'total'));
+        return view('dashboard.addorder', compact('products', 'results', 'rooms', 'users', 'cartitems', 'total', 'search_value'));
     }
 
 
@@ -166,7 +170,7 @@ class AdminAddOrderController extends Controller
                 'orderDate' => $orderItem->created_at,
                 'userName' => $user->name,
                 'roomNumber' => $orderItem->room_id,
-                'extNum' => $user->ext_num ,
+                'extNum' => $user->ext_num,
                 'products' => $products,
                 'orderStatus' => $orderItem->status,
                 'total' => $orderItem->amount

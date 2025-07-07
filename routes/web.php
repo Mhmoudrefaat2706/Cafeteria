@@ -133,7 +133,7 @@ Route::middleware(['auth', 'role:user'])->group(function () {
         'update' => 'users.update',
         'destroy' => 'users.destroy',
     ]);
-});
+
 
 
 Route::prefix('user')->middleware(['auth', 'role:user'])->group(function () {

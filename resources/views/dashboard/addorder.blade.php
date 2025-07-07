@@ -6,11 +6,11 @@
 
 
 @section('ordercontent')
-@if (session('message'))
-    <div id="flash-message" class="alert alert-success position-fixed top-0 end-0 m-3 z-3 shadow" style="min-width: 250px;">
-        {{ session('message') }}
-    </div>
-@endif
+    @if (session('message'))
+        <div id="flash-message" class="alert alert-success position-fixed top-0 end-0 m-3 z-3 shadow" style="min-width: 250px;">
+            {{ session('message') }}
+        </div>
+    @endif
     <div class="container mt-4">
         <div class="row">
             <!-- Order Summary Card -->
@@ -129,34 +129,38 @@
                                             <input type="text" class="ms-2 form-control" name="input_search"
                                                 placeholder="Search drinks...">
                                         </span>
-                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="card-body">
                         <div class="row g-3">
-<!--                             @if (session('error'))
+                            @if (session('error'))
                                 <div class="alert alert-danger">
                                     {{ session('error') }}
                                 </div>
-                            @endif -->
-                            @if (!empty($results) && count($results) > 0)
-                                @foreach ($results as $result)
-                                    <a href="{{ route('addtocart', $result->id) }}"
-                                        style="text-decoration:none ; color:var(--medium-brown) !important">
+                            @endif
+                            @if ($search_value)
+                                @if ($results->isNotEmpty())
+                                    @foreach ($results as $result)
+                                        <a href="{{ route('addtocart', $result->id) }}"
+                                            style="text-decoration:none ; color:var(--medium-brown) !important">
 
-                                        <div class="drink-item p-3 text-center h-100 bg-success-subtle">
-                                            <i class="fas fa-mug-hot fa-3x mb-2" style="color: var(--coffee-brown);"></i>
-                                            <h6 class="fw-bold">{{ $result->name }}</h6>
-                                            <span class="badge price-badge">{{ $result->price }} LE</span>
-                                        </div>
-                                    </a>
+                                            <div class="drink-item p-3 text-center h-100 bg-success-subtle">
+                                                <i class="fas fa-mug-hot fa-3x mb-2" style="color: var(--coffee-brown);"></i>
+                                                <h6 class="fw-bold">{{ $result->name }}</h6>
+                                                <span class="badge price-badge">{{ $result->price }} LE</span>
+                                            </div>
+                                        </a>
 
-                                @endforeach
-                            @else
-<!--                                 <p class="bg bg-danger-subtle text-white p-3"
-                                    style="border-radius:8px !important;  color: brown !important;">No Products Found!</p> -->
+                                    @endforeach
+                                @else
+                            
+                                    <p class="bg bg-danger-subtle text-white p-3"
+                                        style="border-radius:8px !important;  color: brown !important;">No Products Found!</p>
+                            
+                                @endif
                             @endif
 
 
@@ -175,26 +179,25 @@
                                     </a>
                                 </div>
                             @endforeach
-
-
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded',function () {
+        document.addEventListener('DOMContentLoaded', function () {
 
 
-            const flash=document.getElementById('flash-message');
-            if(flash){
-            setTimeout(()=>{
-                flash.style.transition='opacity 0.5s ease';
-                flash.style.opacity='0';
-                setTimeout(()=>flash.remove(),500);
-            },3000);
-        }
-    })
+            const flash = document.getElementById('flash-message');
+            if (flash) {
+                setTimeout(() => {
+                    flash.style.transition = 'opacity 0.5s ease';
+                    flash.style.opacity = '0';
+                    setTimeout(() => flash.remove(), 500);
+                }, 3000);
+            }
+        })
     </script>
 @endsection
